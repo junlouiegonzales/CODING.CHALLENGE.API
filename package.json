@@ -1,0 +1,62 @@
+{
+  "name": "agraph.boilerplate.server",
+  "version": "1.0.0",
+  "description": "Apollo graphql boilerplate for backend",
+  "main": "index.js",
+  "module": "commonjs",
+  "scripts": {
+    "start": "concurrently --names \"watch,server\" -c \"green.bold,gray.bold\" --kill-others-on-fail \"tsc -w\" \"tsc && nodemon --inspect -r dotenv/config ./dist/index.js dotenv_config_path=./.env.development\" ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "graphql-code-generator --config ./server/configs/codegen/index.ts"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junlouiegonzales/AGRAPH.BOILERPLATE.SERVER.git"
+  },
+  "author": "Jhun Louie Gonzales",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/junlouiegonzales/AGRAPH.BOILERPLATE.SERVER/issues"
+  },
+  "homepage": "https://github.com/junlouiegonzales/AGRAPH.BOILERPLATE.SERVER#readme",
+  "dependencies": {
+    "@graphql-tools/load-files": "^6.6.1",
+    "@graphql-tools/schema": "^9.0.10",
+    "@typegoose/typegoose": "^9.12.1",
+    "apollo-server-core": "^3.11.1",
+    "apollo-server-express": "^3.11.1",
+    "dotenv": "^16.0.3",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "graphql-tools": "^8.3.12",
+    "graphql-upload-minimal": "^1.5.4",
+    "graphql-ws": "^5.11.2",
+    "mongoose": "^6.6.0",
+    "typescript": "^4.9.3",
+    "ws": "^8.11.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@graphql-codegen/cli": "2.13.12",
+    "@graphql-codegen/introspection": "2.2.1",
+    "@graphql-codegen/typescript": "2.8.2",
+    "@graphql-codegen/typescript-resolvers": "2.7.7",
+    "@types/express": "^4.17.14",
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^18.11.9",
+    "@types/webpack-env": "^1.18.0",
+    "@types/ws": "^8.5.3",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "concurrently": "^7.5.0",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1"
+  }
+}
