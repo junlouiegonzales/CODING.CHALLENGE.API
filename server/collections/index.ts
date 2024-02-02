@@ -1,3 +1,3 @@
-import users from './user';
+import referrals from './referral';
 
-export default { users };
+export default { referrals };

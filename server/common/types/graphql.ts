@@ -16,38 +16,68 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createUser?: Maybe<Response>;
-  removeUser?: Maybe<Response>;
+  createReferral?: Maybe<Response>;
+  removeReferral?: Maybe<Response>;
+  updateReferral?: Maybe<Response>;
 };
 
 
-export type MutationCreateUserArgs = {
-  contactNumber?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
+export type MutationCreateReferralArgs = {
+  country?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
+  givenName?: InputMaybe<Scalars['String']>;
+  homeNameNumber?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  postcode?: InputMaybe<Scalars['String']>;
+  state?: InputMaybe<Scalars['String']>;
+  street?: InputMaybe<Scalars['String']>;
+  suburb?: InputMaybe<Scalars['String']>;
+  surname?: InputMaybe<Scalars['String']>;
 };
 
 
-export type MutationRemoveUserArgs = {
-  userId?: InputMaybe<Scalars['String']>;
+export type MutationRemoveReferralArgs = {
+  referralId?: InputMaybe<Scalars['String']>;
+};
+
+
+export type MutationUpdateReferralArgs = {
+  country?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
+  givenName?: InputMaybe<Scalars['String']>;
+  homeNameNumber?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  postcode?: InputMaybe<Scalars['String']>;
+  referralId?: InputMaybe<Scalars['String']>;
+  state?: InputMaybe<Scalars['String']>;
+  street?: InputMaybe<Scalars['String']>;
+  suburb?: InputMaybe<Scalars['String']>;
+  surname?: InputMaybe<Scalars['String']>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  getAllUsers?: Maybe<Array<Maybe<User>>>;
+  getAllReferrals?: Maybe<Array<Maybe<Referral>>>;
+};
+
+export type Referral = {
+  __typename?: 'Referral';
+  country?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  givenName?: Maybe<Scalars['String']>;
+  homeNameNumber?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  postcode?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  street?: Maybe<Scalars['String']>;
+  suburb?: Maybe<Scalars['String']>;
+  surname?: Maybe<Scalars['String']>;
 };
 
 export type Response = {
   __typename?: 'Response';
   response?: Maybe<Scalars['Boolean']>;
-};
-
-export type User = {
-  __typename?: 'User';
-  contactNumber?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -123,10 +153,10 @@ export type ResolversTypes = ResolversObject<{
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
+  Referral: ResolverTypeWrapper<Referral>;
   Response: ResolverTypeWrapper<Response>;
   String: ResolverTypeWrapper<Scalars['String']>;
   Upload: ResolverTypeWrapper<Scalars['Upload']>;
-  User: ResolverTypeWrapper<User>;
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -134,19 +164,35 @@ export type ResolversParentTypes = ResolversObject<{
   Boolean: Scalars['Boolean'];
   Mutation: {};
   Query: {};
+  Referral: Referral;
   Response: Response;
   String: Scalars['String'];
   Upload: Scalars['Upload'];
-  User: User;
 }>;
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
-  createUser?: Resolver<Maybe<ResolversTypes['Response']>, ParentType, ContextType, Partial<MutationCreateUserArgs>>;
-  removeUser?: Resolver<Maybe<ResolversTypes['Response']>, ParentType, ContextType, Partial<MutationRemoveUserArgs>>;
+  createReferral?: Resolver<Maybe<ResolversTypes['Response']>, ParentType, ContextType, Partial<MutationCreateReferralArgs>>;
+  removeReferral?: Resolver<Maybe<ResolversTypes['Response']>, ParentType, ContextType, Partial<MutationRemoveReferralArgs>>;
+  updateReferral?: Resolver<Maybe<ResolversTypes['Response']>, ParentType, ContextType, Partial<MutationUpdateReferralArgs>>;
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  getAllUsers?: Resolver<Maybe<Array<Maybe<ResolversTypes['User']>>>, ParentType, ContextType>;
+  getAllReferrals?: Resolver<Maybe<Array<Maybe<ResolversTypes['Referral']>>>, ParentType, ContextType>;
+}>;
+
+export type ReferralResolvers<ContextType = any, ParentType extends ResolversParentTypes['Referral'] = ResolversParentTypes['Referral']> = ResolversObject<{
+  country?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  email?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  givenName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  homeNameNumber?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  phone?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  postcode?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  state?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  street?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  suburb?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  surname?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type ResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['Response'] = ResolversParentTypes['Response']> = ResolversObject<{
@@ -158,19 +204,11 @@ export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTyp
   name: 'Upload';
 }
 
-export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = ResolversObject<{
-  contactNumber?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  firstName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  lastName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}>;
-
 export type Resolvers<ContextType = any> = ResolversObject<{
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Referral?: ReferralResolvers<ContextType>;
   Response?: ResponseResolvers<ContextType>;
   Upload?: GraphQLScalarType;
-  User?: UserResolvers<ContextType>;
 }>;
 
